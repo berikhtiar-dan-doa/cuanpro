@@ -1,7 +1,15 @@
 # Ignore frozen sources and local temporary files
 sources/
+dist/
 *.png
 *.log
 *.tmp
 .DS_Store
 Thumbs.db
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
