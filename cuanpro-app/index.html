@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>CuanPRO: Klaim Reward Saldo E-Wallet Resmi 2026</title>
+  
+  <style>
+    /* ==========================================================================
+       CUANPRO PRO FINTECH REWARD SYSTEM - UPGRADED EDITION
+       Mobile-First, Ultra-Smooth, High-Trust Visual Experience
+       ========================================================================== */
+    :root {
+      --bg-dark: #070a12;
+      --bg-card: #0f1626;
+      --bg-card-elevated: #162035;
+      --bg-card-hover: #1c2944;
+      
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(255, 87, 34, 0.4);
+      
+      --orange-main: #ff5722;
+      --orange-hover: #f44336;
+      --orange-glow: rgba(255, 87, 34, 0.25);
+      
+      --cyan-accent: #38bdf8;
+      --green-status: #10b981;
+      --green-glow: rgba(16, 185, 129, 0.2);
+      
+      --text-white: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-subtle: #64748b;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: ui-monospace, Menlo, Monaco, Consolas, monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      font-size: 16px;
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: var(--font-family);
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1.5;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 80% 20%, rgba(255, 87, 34, 0.06) 0%, transparent 50%);
+      background-repeat: no-repeat;
+    }
+
+    /* Container */
+    .app-viewport {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 14px 16px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* 1. TOP NAVBAR */
+    .top-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: rgba(15, 22, 38, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      position: sticky;
+      top: 10px;
+      z-index: 50;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-logo {
+      font-size: 1.15rem;
+      font-weight: 900;
+      letter-spacing: -0.4px;
+      color: #fff;
+    }
+
+    .brand-logo span {
+      color: var(--orange-main);
+    }
+
+    .verified-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    .verified-pill svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .status-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green-status);
+      box-shadow: 0 0 8px var(--green-status);
+      animation: pulseGreen 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseGreen {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    /* 2. HERO SECTION */
+    .hero-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 20px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 220px;
+      height: 120px;
+      background: radial-gradient(ellipse, rgba(255, 87, 34, 0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .event-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--cyan-accent);
+      letter-spacing: 0.2px;
+    }
+
+    .event-badge svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .hero-heading {
+      font-size: 1.65rem;
+      font-weight: 900;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+      color: #fff;
+    }
+
+    .hero-heading .amount-highlight {
+      display: block;
+      color: var(--orange-main);
+      font-size: 2.1rem;
+      letter-spacing: -0.6px;
+      margin-top: 2px;
+      text-shadow: 0 4px 18px rgba(255, 87, 34, 0.35);
+    }
+
+    .hero-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      max-width: 380px;
+    }
+
+    /* 3. TRUST PILLS ROW */
+    .trust-chips-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    .trust-chip {
+      background: rgba(22, 32, 53, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 9px 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .trust-chip svg {
+      width: 16px;
+      height: 16px;
+      color: var(--cyan-accent);
+    }
+
+    .trust-chip span {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-white);
+      white-space: nowrap;
+    }
+
+    /* 4. VISUAL REWARD BOX WITH MASCOT */
+    .mascot-box {
+      width: 100%;
+      background: linear-gradient(180deg, #131b2e 0%, #0d1424 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+
+    .mascot-img-wrap {
+      width: 100%;
+      max-width: 260px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .mascot-img-wrap img {
+      width: 100%;
+      height: auto;
+      max-height: 180px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+    }
+
+    /* Quota bar */
+    .quota-info {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .quota-info .quota-bold {
+      font-weight: 800;
+      color: var(--orange-main);
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 7px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 84%;
+      background: linear-gradient(90deg, #ff5722 0%, #ff8a65 100%);
+      border-radius: var(--radius-full);
+      box-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+    }
+
+    /* 5. INTERACTIVE E-WALLET SELECTOR */
+    .wallet-select-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-align: left;
+    }
+
+    .select-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .select-label span.req {
+      color: var(--orange-main);
+    }
+
+    .wallet-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+
+    .wallet-btn {
+      background: rgba(22, 32, 53, 0.8);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 9px 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .wallet-btn:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .wallet-btn.selected {
+      background: rgba(255, 87, 34, 0.15);
+      border-color: var(--orange-main);
+      box-shadow: 0 0 12px rgba(255, 87, 34, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .wallet-btn .w-badge {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .wallet-btn.selected .w-badge {
+      color: var(--orange-main);
+    }
+
+    .wallet-btn .w-sub {
+      font-size: 0.62rem;
+      color: var(--text-subtle);
+      font-weight: 600;
+    }
+
+    /* 6. PRIMARY CTA BUTTON */
+    .cta-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .btn-claim {
+      width: 100%;
+      background: linear-gradient(135deg, #ff5722 0%, #ea4815 100%);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      font-size: 1.05rem;
+      font-weight: 900;
+      letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(255, 87, 34, 0.35);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-claim:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(255, 87, 34, 0.45);
+    }
+
+    .btn-claim:active {
+      transform: translateY(1px);
+      box-shadow: 0 4px 12px rgba(255, 87, 34, 0.3);
+    }
+
+    .btn-claim svg {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.2s;
+    }
+
+    .btn-claim:hover svg {
+      transform: translateX(4px);
+    }
+
+    .cta-subnote {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    /* 7. LIVE ACTIVITY FEED (TICKER) */
+    .activity-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 16px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .activity-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .activity-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .activity-title-wrap svg {
+      width: 17px;
+      height: 17px;
+      color: var(--cyan-accent);
+    }
+
+    .activity-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .live-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 8px;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: var(--radius-full);
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #ef4444;
+      letter-spacing: 0.5px;
+    }
+
+    .live-indicator .pulse-red {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #ef4444;
+      animation: pulseGreen 1.5s infinite;
+    }
+
+    .activity-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .activity-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 12px;
+      background: rgba(22, 32, 53, 0.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      transition: all 0.3s ease;
+    }
+
+    .user-info-side {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .user-avatar-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--cyan-accent);
+    }
+
+    .user-text-meta {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .user-name-line {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .user-status-line {
+      font-size: 0.7rem;
+      color: var(--green-status);
+      font-weight: 600;
+    }
+
+    .amount-side {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .amount-value {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--green-status);
+      font-family: var(--font-mono);
+    }
+
+    .amount-time {
+      font-size: 0.68rem;
+      color: var(--text-subtle);
+    }
+
+    /* 8. SYSTEM TRANSPARENCY CARD */
+    .sys-transparency-card {
+      background: rgba(15, 22, 38, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sys-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.74rem;
+    }
+
+    .sys-row .label {
+      color: var(--text-muted);
+    }
+
+    .sys-row .val {
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .sys-row .val.green {
+      color: var(--green-status);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* 9. FAQ ACCORDION */
+    .faq-section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 12px 14px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 14px 12px;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    .faq-item.open .faq-arrow {
+      transform: rotate(180deg);
+    }
+
+    .faq-arrow {
+      transition: transform 0.2s ease;
+      width: 14px;
+      height: 14px;
+      color: var(--text-subtle);
+    }
+
+    /* 10. FOOTER */
+    .footer-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 0 24px;
+      font-size: 0.72rem;
+      color: var(--text-subtle);
+      text-align: center;
+    }
+
+    .security-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      background: rgba(22, 32, 53, 0.4);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .security-badge svg {
+      width: 13px;
+      height: 13px;
+      color: #34d399;
+    }
+
+    /* ==========================================================================
+       MODAL BOTTOM SHEET / POPUP
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 100;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-sheet {
+      width: 100%;
+      max-width: 480px;
+      background: #0f1626;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px 24px 0 0;
+      padding: 24px 20px 34px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-backdrop.active .modal-sheet {
+      transform: translateY(0);
+    }
+
+    .sheet-handle {
+      width: 40px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-full);
+      margin-bottom: 2px;
+    }
+
+    .checkmark-box {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.12);
+      border: 2px solid var(--green-status);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 24px rgba(16, 185, 129, 0.35);
+      position: relative;
+    }
+
+    .checkmark-box svg {
+      width: 32px;
+      height: 32px;
+      color: var(--green-status);
+    }
+
+    .modal-badge-status {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.5px;
+    }
+
+    .modal-headline {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.25;
+    }
+
+    .modal-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      max-width: 360px;
+    }
+
+    .receipt-panel {
+      width: 100%;
+      background: rgba(22, 32, 53, 0.65);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+    }
+
+    .rcpt-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    .rcpt-row .lbl {
+      color: var(--text-muted);
+    }
+
+    .rcpt-row .val {
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .rcpt-row .val.highlight-amt {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--orange-main);
+      font-family: var(--font-mono);
+    }
+
+    .rcpt-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
+      margin: 2px 0;
+    }
+
+    .btn-finish {
+      width: 100%;
+      background: linear-gradient(135deg, #ff5722 0%, #ea4815 100%);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      font-size: 1.05rem;
+      font-weight: 900;
+      letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(255, 87, 34, 0.4);
+      transition: all 0.2s;
+    }
+
+    .btn-finish:hover {
+      box-shadow: 0 12px 30px rgba(255, 87, 34, 0.55);
+    }
+
+    .modal-guarantee-text {
+      font-size: 0.72rem;
+      color: var(--text-subtle);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-viewport">
+    
+    <!-- 1. TOP HEADER NAVBAR -->
+    <header class="top-header">
+      <div class="brand-wrap">
+        <span class="brand-logo">Cuan<span>PRO</span></span>
+        <span class="verified-pill">
+          <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.78 6.03l-4.5 4.5a.75.75 0 01-1.06 0l-2-2a.75.75 0 011.06-1.06L6.75 8.94l3.97-3.97a.75.75 0 111.06 1.06z"/>
+          </svg>
+          Resmi
+        </span>
+      </div>
+
+      <div class="status-wrap">
+        <span class="status-dot"></span>
+        <span>Event Aktif</span>
+      </div>
+    </header>
+
+    <!-- 2. HERO CARD -->
+    <section class="hero-card">
+      <div class="event-badge">
+        <svg viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/>
+        </svg>
+        <span>Reward Pengguna Baru 2026</span>
+      </div>
+
+      <h1 class="hero-heading">
+        Klaim Saldo E-Wallet
+        <span class="amount-highlight">Hingga Rp 650.000</span>
+      </h1>
+
+      <p class="hero-sub">
+        Sistem transfer otomatis langsung masuk ke akun Anda. Cepat, aman, dan tanpa dipungut biaya apapun.
+      </p>
+
+      <!-- 3. TRUST CHIPS ROW -->
+      <div class="trust-chips-row">
+        <div class="trust-chip">
+          <svg viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
+          </svg>
+          <span>Instan 30 Detik</span>
+        </div>
+
+        <div class="trust-chip">
+          <svg viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd"/>
+          </svg>
+          <span>Keamanan Terjamin</span>
+        </div>
+
+        <div class="trust-chip">
+          <svg viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+          </svg>
+          <span>48.5K+ Penerima</span>
+        </div>
+      </div>
+
+      <!-- 4. MASCOT REWARD BOX -->
+      <div class="mascot-box">
+        <div class="mascot-img-wrap">
+          <img src="cuanpro.webp" alt="CuanPRO Mascot Reward" width="280" height="180" loading="eager" decoding="async">
+        </div>
+
+        <div class="quota-info">
+          <span>Tersedia Hari Ini: <span class="quota-bold">42 / 50 Kuota</span></span>
+          <span class="quota-bold">Sisa 8 Kuota!</span>
+        </div>
+
+        <div class="progress-track">
+          <div class="progress-fill"></div>
+        </div>
+      </div>
+
+      <!-- 5. SELECT TARGET E-WALLET -->
+      <div class="wallet-select-section">
+        <div class="select-label">
+          <span>Pilih Dompet Penerima:</span>
+          <span class="req">Wajib dipilih *</span>
+        </div>
+
+        <div class="wallet-grid">
+          <button type="button" class="wallet-btn selected" onclick="pickWallet('DANA', this)">
+            <span class="w-badge">DANA</span>
+            <span class="w-sub">Instan</span>
+          </button>
+          <button type="button" class="wallet-btn" onclick="pickWallet('ShopeePay', this)">
+            <span class="w-badge">ShopeePay</span>
+            <span class="w-sub">Instan</span>
+          </button>
+          <button type="button" class="wallet-btn" onclick="pickWallet('GoPay', this)">
+            <span class="w-badge">GoPay</span>
+            <span class="w-sub">Instan</span>
+          </button>
+          <button type="button" class="wallet-btn" onclick="pickWallet('OVO', this)">
+            <span class="w-badge">OVO</span>
+            <span class="w-sub">Instan</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 6. PRIMARY CTA -->
+      <div class="cta-container">
+        <button id="mainClaimBtn" type="button" class="btn-claim" onclick="handleClaimClick()">
+          <span id="btnClaimText">KLAIM REWARD SEKARANG</span>
+          <svg viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+        <span class="cta-subnote">Gratis 100% • Langsung Masuk • Tanpa Deposit</span>
+      </div>
+
+    </section>
+
+    <!-- 7. LIVE ACTIVITY FEED TICKER -->
+    <section class="activity-section">
+      <div class="activity-header">
+        <div class="activity-title-wrap">
+          <svg viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd"/>
+          </svg>
+          <span class="activity-title">Aktivitas Penarikan Terkini</span>
+        </div>
+
+        <span class="live-indicator">
+          <span class="pulse-red"></span>
+          LIVE
+        </span>
+      </div>
+
+      <div id="activityFeedList" class="activity-list">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+    </section>
+
+    <!-- 8. SYSTEM STATUS & TRANSPARENCY -->
+    <section class="sys-transparency-card">
+      <div class="sys-row">
+        <span class="label">Status Server Alokasi</span>
+        <span class="val green">● Normal & Stabil</span>
+      </div>
+      <div class="sys-row">
+        <span class="label">Gateway E-Wallet</span>
+        <span class="val green">● Terhubung (18ms)</span>
+      </div>
+      <div class="sys-row">
+        <span class="label">Waktu Sinkronisasi</span>
+        <span id="liveTimestamp" class="val">06 Okt 2026 · 22:50 WIB</span>
+      </div>
+    </section>
+
+    <!-- 9. FAQ ACCORDION -->
+    <section class="faq-section">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>Bagaimana cara mencairkan reward?</span>
+          <svg class="faq-arrow" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <div class="faq-answer">
+          Cukup pilih dompet digital aktif Anda, klik tombol "KLAIM REWARD SEKARANG", dan selesaikan verifikasi penerimaan kode hadiah Anda.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>Apakah ada biaya administrasi?</span>
+          <svg class="faq-arrow" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <div class="faq-answer">
+          Tidak ada sama sekali. Program ini 100% gratis dan tanpa dipungut biaya atau deposit saldo.
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. FOOTER -->
+    <footer class="footer-wrap">
+      <div class="security-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0110 0v4"></path>
+        </svg>
+        <span>Koneksi Aman Terenkripsi 256-Bit</span>
+      </div>
+      <span>&copy; 2026 CuanPRO Global Rewards. Hak Cipta Dilindungi.</span>
+    </footer>
+
+  </div>
+
+  <!-- MODAL BOTTOM SHEET -->
+  <div id="rewardModal" class="modal-backdrop">
+    <div class="modal-sheet">
+      <div class="sheet-handle"></div>
+
+      <div class="checkmark-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+
+      <span class="modal-badge-status">PENARIKAN TERVERIFIKASI</span>
+
+      <h2 class="modal-headline">Saldo Berhasil Ditambahkan!</h2>
+      <p class="modal-desc">
+        Sistem berhasil mengalokasikan kuota hadiah ke dompet <b id="allocatedWalletText" style="color:#ff5722">DANA</b> Anda. Saldo siap dicairkan sekarang.
+      </p>
+
+      <div class="receipt-panel">
+        <div class="rcpt-row">
+          <span class="lbl">Nominal Hadiah</span>
+          <span class="val highlight-amt">Rp 650.000</span>
+        </div>
+        <div class="rcpt-divider"></div>
+        <div class="rcpt-row">
+          <span class="lbl">ID Alokasi</span>
+          <span id="allocatedTrx" class="val" style="font-family:var(--font-mono)">CP-948214</span>
+        </div>
+        <div class="rcpt-row">
+          <span class="lbl">Metode Pencairan</span>
+          <span id="allocatedMethod" class="val">DANA Instan</span>
+        </div>
+        <div class="rcpt-row">
+          <span class="lbl">Status</span>
+          <span class="val" style="color:var(--green-status)">● Siap Masuk</span>
+        </div>
+      </div>
+
+      <button type="button" class="btn-finish" onclick="triggerAffiliateRedirect()">
+        <span>AMBIL SALDO SEKARANG</span>
+        <svg viewBox="0 0 20 20" fill="currentColor" style="width:20px;height:20px">
+          <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/>
+        </svg>
+      </button>
+
+      <span class="modal-guarantee-text">
+        🔒 Sistem Otomatis Terintegrasi • Bebas Biaya Admin
+      </span>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    (function() {
+      const SHOPEE_LINK = "https://s.shopee.co.id/2qV87fGqlb";
+      let activeWallet = "DANA";
+
+      // Wallet Picker
+      window.pickWallet = function(name, btn) {
+        activeWallet = name;
+        document.querySelectorAll(".wallet-btn").forEach(el => el.classList.remove("selected"));
+        btn.classList.add("selected");
+      };
+
+      // Claim Button Logic
+      window.handleClaimClick = function() {
+        const btn = document.getElementById("mainClaimBtn");
+        const btnText = document.getElementById("btnClaimText");
+        
+        btn.disabled = true;
+        btnText.textContent = "Memverifikasi kuota " + activeWallet + "...";
+        
+        setTimeout(() => {
+          btn.disabled = false;
+          btnText.textContent = "KLAIM REWARD SEKARANG";
+          openRewardModal();
+        }, 650);
+      };
+
+      function openRewardModal() {
+        document.getElementById("allocatedWalletText").textContent = activeWallet;
+        document.getElementById("allocatedMethod").textContent = activeWallet + " Instan";
+        document.getElementById("allocatedTrx").textContent = "CP-" + Math.floor(100000 + Math.random() * 900000);
+        
+        const modal = document.getElementById("rewardModal");
+        modal.classList.add("active");
+      }
+
+      window.triggerAffiliateRedirect = function() {
+        try {
+          const w = window.open(SHOPEE_LINK, "_blank");
+          if (!w || w.closed || typeof w.closed === "undefined") {
+            window.location.href = SHOPEE_LINK;
+          }
+        } catch (e) {
+          window.location.href = SHOPEE_LINK;
+        }
+      };
+
+      // Close modal if backdrop clicked
+      document.getElementById("rewardModal").addEventListener("click", function(e) {
+        if (e.target === this) {
+          this.classList.remove("active");
+        }
+      });
+
+      // FAQ Toggle
+      window.toggleFaq = function(el) {
+        el.classList.toggle("open");
+      };
+
+      // Live Timestamp (WIB format)
+      function updateLiveTimestamp() {
+        const now = new Date();
+        const options = { 
+          day: '2-digit', 
+          month: 'short', 
+          year: 'numeric', 
+          hour: '2-digit', 
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false, 
+          timeZone: 'Asia/Jakarta' 
+        };
+        const formatted = new Intl.DateTimeFormat('id-ID', options).format(now);
+        const el = document.getElementById("liveTimestamp");
+        if (el) el.textContent = formatted.replace(/\./g, ':') + " WIB";
+      }
+      updateLiveTimestamp();
+      setInterval(updateLiveTimestamp, 1000);
+
+      // Dynamic Live Activity Feed
+      const activities = [
+        { init: "LG", name: "Lestari G.***", amt: "Rp 300.000", time: "1 mnt lalu" },
+        { init: "RT", name: "Rafi T.***", amt: "Rp 320.000", time: "2 mnt lalu" },
+        { init: "WK", name: "Wulan K.***", amt: "Rp 130.000", time: "45 dtk lalu" },
+        { init: "DA", name: "Dimas A.***", amt: "Rp 650.000", time: "Baru saja" },
+        { init: "SP", name: "Siti P.***", amt: "Rp 250.000", time: "18 dtk lalu" },
+        { init: "BP", name: "Budi P.***", amt: "Rp 500.000", time: "3 mnt lalu" },
+        { init: "AN", name: "Anita N.***", amt: "Rp 350.000", time: "1 mnt lalu" }
+      ];
+
+      function renderActivityFeed() {
+        const list = document.getElementById("activityFeedList");
+        if (!list) return;
+
+        list.innerHTML = activities.slice(0, 4).map(item => `
+          <div class="activity-item">
+            <div class="user-info-side">
+              <div class="user-avatar-circle">${item.init}</div>
+              <div class="user-text-meta">
+                <span class="user-name-line">${item.name}</span>
+                <span class="user-status-line">Berhasil dicairkan</span>
+              </div>
+            </div>
+            <div class="amount-side">
+              <span class="amount-value">+${item.amt}</span>
+              <span class="amount-time">${item.time}</span>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      renderActivityFeed();
+
+      // Periodically rotate activities
+      setInterval(() => {
+        const first = activities.shift();
+        activities.push(first);
+        renderActivityFeed();
+      }, 3500);
+
+    })();
+  </script>
+</body>
+</html>
