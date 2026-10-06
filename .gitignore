@@ -1,0 +1,7 @@
+# Ignore frozen sources and local temporary files
+sources/
+*.png
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
