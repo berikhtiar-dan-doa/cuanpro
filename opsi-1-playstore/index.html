@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>CuanPRO: Penghasil Reward & Saldo — Aplikasi di Google Play</title>
+  
+  <style>
+    /* ==========================================================================
+       GOOGLE PLAY STORE DARK THEME DESIGN SYSTEM
+       Authentic, high-trust, native Android feel with Google Play Green & Slate
+       ========================================================================== */
+    :root {
+      --gp-bg: #111418;
+      --gp-surface: #1a1e24;
+      --gp-surface-elevated: #222730;
+      --gp-border: rgba(255, 255, 255, 0.08);
+      
+      --gp-green: #01875f;
+      --gp-green-hover: #029d6f;
+      --gp-green-active: #016f4e;
+      --gp-green-light: #41c38c;
+      
+      --gp-text-primary: #e3e3e3;
+      --gp-text-secondary: #9aa0a6;
+      --gp-text-muted: #5f6368;
+      
+      --gp-star: #e3e3e3;
+      --gp-badge-bg: #2a2f38;
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --radius-pill: 9999px;
+      
+      --font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", Helvetica, Arial, sans-serif;
+      --font-mono: ui-monospace, Menlo, Monaco, Consolas, monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      font-size: 16px;
+      background-color: var(--gp-bg);
+      color: var(--gp-text-primary);
+      font-family: var(--font-family);
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--gp-bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1.45;
+    }
+
+    /* Outer Wrapper */
+    .store-container {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      padding-bottom: 48px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 1. TOP STORE APPBAR */
+    .store-appbar {
+      width: 100%;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      background-color: var(--gp-bg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .appbar-left, .appbar-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      color: var(--gp-text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      border-radius: 50%;
+    }
+
+    .icon-btn svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    /* 2. APP HEADER INFO */
+    .app-header {
+      display: flex;
+      gap: 18px;
+      padding: 16px 20px 12px;
+      align-items: flex-start;
+    }
+
+    .app-icon-wrapper {
+      width: 82px;
+      height: 82px;
+      flex-shrink: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      background-color: var(--gp-surface);
+      border: 1px solid var(--gp-border);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .app-icon-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .app-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .app-name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--gp-text-primary);
+      line-height: 1.25;
+      letter-spacing: -0.3px;
+    }
+
+    .app-developer {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--gp-green-light);
+      text-decoration: none;
+    }
+
+    .app-tags {
+      font-size: 0.75rem;
+      color: var(--gp-text-muted);
+      margin-top: 2px;
+    }
+
+    /* 3. APP METRICS / RATINGS ROW */
+    .app-metrics-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 14px 20px;
+      margin: 8px 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .app-metrics-row::-webkit-scrollbar {
+      display: none;
+    }
+
+    .metric-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 3px;
+      flex: 1;
+    }
+
+    .metric-value {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--gp-text-primary);
+    }
+
+    .metric-star {
+      width: 13px;
+      height: 13px;
+      fill: var(--gp-star);
+    }
+
+    .metric-label {
+      font-size: 0.72rem;
+      color: var(--gp-text-secondary);
+      white-space: nowrap;
+    }
+
+    .metric-badge-box {
+      border: 1px solid var(--gp-text-secondary);
+      border-radius: 2px;
+      padding: 0 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .metric-divider {
+      width: 1px;
+      height: 24px;
+      background-color: var(--gp-border);
+      flex-shrink: 0;
+    }
+
+    /* 4. PRIMARY INSTALL BUTTON */
+    .cta-container {
+      padding: 6px 20px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-install {
+      width: 100%;
+      height: 48px;
+      background-color: var(--gp-green);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-pill);
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(1, 135, 95, 0.3);
+      transition: background-color 0.15s ease, transform 0.1s ease;
+    }
+
+    .btn-install:active {
+      transform: scale(0.98);
+      background-color: var(--gp-green-active);
+    }
+
+    .protect-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: var(--gp-text-secondary);
+    }
+
+    .protect-icon {
+      width: 14px;
+      height: 14px;
+      color: var(--gp-green-light);
+    }
+
+    /* 5. SCREENSHOT PREVIEW CAROUSEL */
+    .preview-section {
+      padding: 10px 0 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .preview-carousel {
+      display: flex;
+      gap: 12px;
+      padding: 0 20px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .preview-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .preview-card {
+      width: 220px;
+      height: 124px;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #1e2638 0%, #131824 100%);
+      border: 1px solid var(--gp-border);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .preview-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--gp-green-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .preview-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--gp-text-primary);
+      line-height: 1.3;
+    }
+
+    .preview-sub {
+      font-size: 0.72rem;
+      color: var(--gp-text-secondary);
+    }
+
+    /* 6. ABOUT APP SECTION */
+    .section-block {
+      padding: 16px 20px;
+      border-top: 1px solid var(--gp-border);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .section-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .section-heading {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--gp-text-primary);
+    }
+
+    .arrow-icon {
+      width: 18px;
+      height: 18px;
+      color: var(--gp-text-secondary);
+    }
+
+    .about-text {
+      font-size: 0.86rem;
+      color: var(--gp-text-secondary);
+      line-height: 1.55;
+    }
+
+    .about-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .pill-tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--gp-text-primary);
+      background-color: var(--gp-surface);
+      border: 1px solid var(--gp-border);
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+    }
+
+    /* 7. DATA SAFETY CARD */
+    .safety-card {
+      background-color: var(--gp-surface);
+      border: 1px solid var(--gp-border);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .safety-icon {
+      width: 22px;
+      height: 22px;
+      color: var(--gp-green-light);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .safety-content {
+      font-size: 0.8rem;
+      color: var(--gp-text-secondary);
+      line-height: 1.45;
+    }
+
+    /* 8. RATINGS & REVIEWS */
+    .rating-summary {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .big-score {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gp-text-primary);
+      line-height: 1;
+    }
+
+    .score-stars {
+      display: flex;
+      gap: 2px;
+      margin-top: 4px;
+    }
+
+    .score-stars svg {
+      width: 12px;
+      height: 12px;
+      fill: var(--gp-green-light);
+    }
+
+    .score-count {
+      font-size: 0.72rem;
+      color: var(--gp-text-secondary);
+      margin-top: 4px;
+    }
+
+    .rating-bars {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      color: var(--gp-text-secondary);
+    }
+
+    .bar-num {
+      width: 8px;
+    }
+
+    .bar-track {
+      flex: 1;
+      height: 5px;
+      background-color: var(--gp-surface);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background-color: var(--gp-green-light);
+      border-radius: 3px;
+    }
+
+    /* Review Cards */
+    .reviews-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .review-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .review-user-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .user-avatar-circle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: #4285f4;
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .user-avatar-circle.c2 { background-color: #ea4335; }
+    .user-avatar-circle.c3 { background-color: #01875f; }
+
+    .review-user-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gp-text-primary);
+    }
+
+    .review-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      color: var(--gp-text-muted);
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 1px;
+    }
+
+    .review-stars svg {
+      width: 10px;
+      height: 10px;
+      fill: var(--gp-green-light);
+    }
+
+    .review-comment {
+      font-size: 0.82rem;
+      color: var(--gp-text-secondary);
+      line-height: 1.45;
+    }
+
+    /* 9. MODAL POPUP (STAGE 2) */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 360px;
+      background-color: var(--gp-surface-elevated);
+      border: 1px solid var(--gp-border);
+      border-radius: var(--radius-lg);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      text-align: center;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-icon-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: rgba(1, 135, 95, 0.15);
+      color: var(--gp-green-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .modal-icon-badge svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .modal-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--gp-text-primary);
+    }
+
+    .modal-desc {
+      font-size: 0.82rem;
+      color: var(--gp-text-secondary);
+      line-height: 1.45;
+    }
+
+    .modal-voucher-strip {
+      background-color: var(--gp-surface);
+      border: 1px solid var(--gp-border);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    .voucher-val {
+      color: var(--gp-green-light);
+      font-weight: 700;
+      font-family: var(--font-mono);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="store-container">
+
+    <!-- TOP STORE APPBAR -->
+    <header class="store-appbar">
+      <div class="appbar-left">
+        <button class="icon-btn" aria-label="Kembali" onclick="triggerInstall()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </button>
+      </div>
+      <div class="appbar-right">
+        <button class="icon-btn" aria-label="Cari" onclick="triggerInstall()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+        <button class="icon-btn" aria-label="Lainnya" onclick="triggerInstall()">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="5" r="2"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+            <circle cx="12" cy="19" r="2"></circle>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- APP HEADER -->
+    <section class="app-header">
+      <div class="app-icon-wrapper">
+        <img src="cuanpro.webp" alt="CuanPRO Logo" class="app-icon-img" width="82" height="82" loading="eager">
+      </div>
+      <div class="app-title-group">
+        <h1 class="app-name">CuanPRO: Reward & Saldo</h1>
+        <a href="#about" class="app-developer">CuanPRO Official Studio</a>
+        <div class="app-tags">Berisi iklan • Belanja dalam aplikasi</div>
+      </div>
+    </section>
+
+    <!-- APP METRICS BAR -->
+    <section class="app-metrics-row">
+      <div class="metric-col">
+        <div class="metric-value">
+          <span>4.8</span>
+          <svg class="metric-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        </div>
+        <span class="metric-label">124 rb ulasan</span>
+      </div>
+
+      <div class="metric-divider"></div>
+
+      <div class="metric-col">
+        <div class="metric-value">18 MB</div>
+        <span class="metric-label">Ukuran</span>
+      </div>
+
+      <div class="metric-divider"></div>
+
+      <div class="metric-col">
+        <div class="metric-value">
+          <span class="metric-badge-box">3+</span>
+        </div>
+        <span class="metric-label">Rating 3+</span>
+      </div>
+
+      <div class="metric-divider"></div>
+
+      <div class="metric-col">
+        <div class="metric-value">500 rb+</div>
+        <span class="metric-label">Download</span>
+      </div>
+    </section>
+
+    <!-- MAIN INSTALL ACTION BUTTON -->
+    <section class="cta-container">
+      <button id="installBtn" class="btn-install" type="button">
+        <span>Instal</span>
+      </button>
+      <div class="protect-badge">
+        <svg class="protect-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+        </svg>
+        <span>Terverifikasi oleh Play Protect</span>
+      </div>
+    </section>
+
+    <!-- PREVIEW SCREENSHOTS CAROUSEL -->
+    <section class="preview-section">
+      <div class="preview-carousel">
+        <div class="preview-card" onclick="triggerInstall()">
+          <span class="preview-tag">EVENT RESMI 2026</span>
+          <div class="preview-title">Klaim Saldo Reward Hingga Rp 650.000</div>
+          <span class="preview-sub">100% instan ke E-Wallet</span>
+        </div>
+        <div class="preview-card" onclick="triggerInstall()">
+          <span class="preview-tag">MISI HARIAN</span>
+          <div class="preview-title">Selesaikan Tugas Mudah & Kumpulkan Poin</div>
+          <span class="preview-sub">Tersedia 24 jam nonstop</span>
+        </div>
+        <div class="preview-card" onclick="triggerInstall()">
+          <span class="preview-tag">PENCAIRAN CEPAT</span>
+          <div class="preview-title">Bebas Biaya Admin Langsung Cair</div>
+          <span class="preview-sub">Mendukung semua akun resmi</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT THIS APP -->
+    <section id="about" class="section-block">
+      <div class="section-header-row" onclick="triggerInstall()">
+        <h2 class="section-heading">Tentang aplikasi ini</h2>
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </div>
+      <p class="about-text">
+        CuanPRO adalah aplikasi program reward dan voucher belanja resmi. Selesaikan aktivitas harian ringan, kumpulkan poin reward, dan klaim saldo instan langsung ke akun terverifikasi Anda tanpa dipungut biaya apapun.
+      </p>
+      <div class="about-pills">
+        <span class="pill-tag">#Hadiah & Reward</span>
+        <span class="pill-tag">#Pilihan Editor</span>
+        <span class="pill-tag">#Populer</span>
+      </div>
+    </section>
+
+    <!-- DATA SAFETY -->
+    <section class="section-block">
+      <div class="section-header-row" onclick="triggerInstall()">
+        <h2 class="section-heading">Keamanan data</h2>
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </div>
+      <div class="safety-card">
+        <svg class="safety-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+        </svg>
+        <p class="safety-content">
+          Keamanan dimulai dari memahami cara developer mengumpulkan data. Developer menyatakan aplikasi ini tidak membagikan data pribadi Anda ke pihak ketiga.
+        </p>
+      </div>
+    </section>
+
+    <!-- RATINGS & REVIEWS -->
+    <section class="section-block">
+      <div class="section-header-row" onclick="triggerInstall()">
+        <h2 class="section-heading">Rating dan ulasan</h2>
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </div>
+
+      <div class="rating-summary">
+        <div>
+          <div class="big-score">4.8</div>
+          <div class="score-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <div class="score-count">124.582 total</div>
+        </div>
+
+        <div class="rating-bars">
+          <div class="bar-row">
+            <span class="bar-num">5</span>
+            <div class="bar-track"><div class="bar-fill" style="width: 86%;"></div></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-num">4</span>
+            <div class="bar-track"><div class="bar-fill" style="width: 10%;"></div></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-num">3</span>
+            <div class="bar-track"><div class="bar-fill" style="width: 2%;"></div></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-num">2</span>
+            <div class="bar-track"><div class="bar-fill" style="width: 1%;"></div></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-num">1</span>
+            <div class="bar-track"><div class="bar-fill" style="width: 1%;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEWS LIST -->
+      <div class="reviews-list">
+        <div class="review-item">
+          <div class="review-user-row">
+            <div class="user-avatar-circle">B</div>
+            <span class="review-user-name">Budi Santoso</span>
+          </div>
+          <div class="review-meta">
+            <div class="review-stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+            <span>05 Okt 2026</span>
+          </div>
+          <p class="review-comment">
+            Aplikasi mantap banget, baru coba langsung cair 300rb ke e-wallet tanpa ribet! Sangat direkomendasikan.
+          </p>
+        </div>
+
+        <div class="review-item">
+          <div class="review-user-row">
+            <div class="user-avatar-circle c2">R</div>
+            <span class="review-user-name">Rina Amelia</span>
+          </div>
+          <div class="review-meta">
+            <div class="review-stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+            <span>04 Okt 2026</span>
+          </div>
+          <p class="review-comment">
+            Beneran ngebantu buat nambah saldo belanja, proses verifikasinya instan dan nggak muter-muter.
+          </p>
+        </div>
+
+        <div class="review-item">
+          <div class="review-user-row">
+            <div class="user-avatar-circle c3">D</div>
+            <span class="review-user-name">Dimas Pratama</span>
+          </div>
+          <div class="review-meta">
+            <div class="review-stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+            <span>02 Okt 2026</span>
+          </div>
+          <p class="review-comment">
+            Keren banget, event rewardnya beneran aktif. Makasih developer!
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- STAGE 2 CONFIRMATION MODAL -->
+  <div id="rewardModal" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-icon-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h2 class="modal-title">Aplikasi Siap Dibuka</h2>
+      <p class="modal-desc">
+        Sistem telah memverifikasi kuota hadiah pengguna baru Anda. Silakan lanjutkan untuk membuka aplikasi dan mengklaim kuota.
+      </p>
+      <div class="modal-voucher-strip">
+        <span>Voucher dialokasikan</span>
+        <span class="voucher-val">Rp 650.000</span>
+      </div>
+      <button class="btn-install" type="button" onclick="confirmOpen()">
+        <span>Buka Sekarang</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const SHOPEE_LINK = "https://s.shopee.co.id/2qV87fGqlb";
+      let clickCount = 0;
+      const installBtn = document.getElementById("installBtn");
+      const modal = document.getElementById("rewardModal");
+
+      function handleAction() {
+        clickCount++;
+        if (clickCount === 1) {
+          // Change button state to indicate downloading / opening
+          installBtn.textContent = "Membuka...";
+          openSafeLink(SHOPEE_LINK);
+          setTimeout(() => {
+            installBtn.textContent = "Buka";
+          }, 1500);
+        } else {
+          if (modal) modal.classList.add("active");
+        }
+      }
+
+      window.triggerInstall = handleAction;
+      if (installBtn) installBtn.addEventListener("click", handleAction);
+
+      window.confirmOpen = function() {
+        openSafeLink(SHOPEE_LINK);
+      };
+
+      if (modal) {
+        modal.addEventListener("click", function(e) {
+          if (e.target === modal) modal.classList.remove("active");
+        });
+      }
+
+      function openSafeLink(url) {
+        try {
+          const newWin = window.open(url, "_blank");
+          if (!newWin || newWin.closed || typeof newWin.closed === "undefined") {
+            window.location.href = url;
+          }
+        } catch (e) {
+          window.location.href = url;
+        }
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>CuanPRO: Klaim Reward Saldo E-Wallet 2026</title>
+  
+  <style>
+    /* ==========================================================================
+       3-STEP CLAIM WIZARD DESIGN SYSTEM
+       Interactive, Gamified, High-Trust Fintech Funnel
+       ========================================================================== */
+    :root {
+      --bg-base: #070a12;
+      --bg-surface: #0f1626;
+      --bg-surface-elevated: #162035;
+      --bg-surface-hover: #1b2844;
+      
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-active: #ff5722;
+      
+      --orange-primary: #ff5722;
+      --orange-hover: #ea4815;
+      
+      --cyan-accent: #38bdf8;
+      --green-status: #10b981;
+      --green-light: #34d399;
+      
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-tertiary: #64748b;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-pill: 9999px;
+      
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: ui-monospace, Menlo, Monaco, Consolas, monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      font-size: 16px;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-family);
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1.5;
+    }
+
+    /* Container */
+    .funnel-container {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 16px 18px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    /* 1. TOP NAVBAR */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: rgba(15, 22, 38, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+    }
+
+    .brand-mark {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: #fff;
+    }
+
+    .brand-mark span {
+      color: var(--orange-primary);
+    }
+
+    .live-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: var(--green-status);
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulseDot 2s infinite;
+    }
+
+    @keyframes pulseDot {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    /* 2. HERO HEADER */
+    .hero-header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .event-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background-color: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: var(--radius-pill);
+      color: var(--cyan-accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .hero-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-title span {
+      color: var(--orange-primary);
+    }
+
+    .hero-sub {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      max-width: 90%;
+      line-height: 1.45;
+    }
+
+    /* 3. STEP PROGRESS BAR */
+    .step-bar {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin: 8px 4px 4px;
+    }
+
+    .step-bar::before {
+      content: '';
+      position: absolute;
+      top: 14px;
+      left: 15%;
+      right: 15%;
+      height: 2px;
+      background-color: var(--border-subtle);
+      z-index: 1;
+    }
+
+    .step-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+      z-index: 2;
+      flex: 1;
+    }
+
+    .step-circle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: var(--bg-surface);
+      border: 2px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      transition: all 0.3s ease;
+    }
+
+    .step-indicator.active .step-circle {
+      background-color: var(--orange-primary);
+      border-color: var(--orange-primary);
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(255, 87, 34, 0.5);
+    }
+
+    .step-indicator.completed .step-circle {
+      background-color: var(--green-status);
+      border-color: var(--green-status);
+      color: #ffffff;
+    }
+
+    .step-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      transition: color 0.3s ease;
+    }
+
+    .step-indicator.active .step-title {
+      color: var(--text-primary);
+    }
+
+    /* 4. MAIN WIZARD INTERACTIVE CARD */
+    .wizard-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 22px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      box-shadow: 0 14px 34px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .wizard-panel-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .wizard-panel-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-top: -10px;
+    }
+
+    /* E-Wallet Grid Options */
+    .ewallet-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .ewallet-option {
+      background-color: var(--bg-surface-elevated);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .ewallet-option:hover {
+      background-color: var(--bg-surface-hover);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .ewallet-option.selected {
+      background-color: rgba(255, 87, 34, 0.08);
+      border-color: var(--orange-primary);
+      box-shadow: 0 0 14px rgba(255, 87, 34, 0.2);
+    }
+
+    .ewallet-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .ewallet-radio-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid var(--border-subtle);
+      position: absolute;
+      top: 14px;
+      right: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .ewallet-option.selected .ewallet-radio-dot {
+      border-color: var(--orange-primary);
+      background-color: var(--orange-primary);
+    }
+
+    .ewallet-option.selected .ewallet-radio-dot::after {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: #fff;
+    }
+
+    .ewallet-subtext {
+      font-size: 0.72rem;
+      color: var(--text-tertiary);
+    }
+
+    /* Buttons */
+    .btn-wizard {
+      width: 100%;
+      height: 50px;
+      background-color: var(--orange-primary);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-md);
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 18px -4px rgba(255, 87, 34, 0.4);
+      transition: all 0.15s ease;
+    }
+
+    .btn-wizard:hover {
+      background-color: var(--orange-hover);
+    }
+
+    .btn-wizard:active {
+      transform: scale(0.98);
+    }
+
+    .btn-wizard:disabled {
+      background-color: #2b3342;
+      color: #64748b;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    /* STEP 2: SCANNING & RESULT */
+    .step2-panel {
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+    }
+
+    .step2-panel.active {
+      display: flex;
+    }
+
+    .scan-status-text {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--cyan-accent);
+      min-height: 24px;
+    }
+
+    .scan-progress-box {
+      width: 100%;
+      height: 10px;
+      background-color: rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+      margin: 4px 0;
+    }
+
+    .scan-progress-bar {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #38bdf8, #10b981);
+      border-radius: var(--radius-pill);
+      transition: width 0.3s ease;
+    }
+
+    /* Success Allocated Voucher Card */
+    .success-allocation-card {
+      display: none;
+      background: linear-gradient(180deg, var(--bg-surface-elevated) 0%, rgba(16, 185, 129, 0.08) 100%);
+      border: 1.5px solid rgba(16, 185, 129, 0.3);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+      animation: popIn 0.3s ease;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .success-badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--green-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .allocated-amount {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.5px;
+    }
+
+    .allocated-meta-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 8px;
+    }
+
+    .allocated-meta-line span:last-child {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      color: #fff;
+    }
+
+    /* 5. RECENT ACTIVITY LIST */
+    .activity-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .activity-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 4px;
+    }
+
+    .section-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .live-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--green-light);
+      background-color: rgba(16, 185, 129, 0.12);
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+    }
+
+    .activity-list {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .activity-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.8rem;
+    }
+
+    .activity-row:last-child {
+      border-bottom: none;
+    }
+
+    .activity-user {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .activity-name {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .activity-time {
+      font-size: 0.7rem;
+      color: var(--text-tertiary);
+    }
+
+    .activity-payout {
+      font-weight: 700;
+      color: var(--green-light);
+      font-family: var(--font-mono);
+    }
+
+    /* Trust Footer */
+    .trust-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--text-tertiary);
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="funnel-container">
+
+    <!-- TOP NAV -->
+    <header class="top-nav">
+      <div class="brand-mark">Cuan<span>PRO</span> Rewards</div>
+      <div class="live-status-pill">
+        <span class="status-dot"></span>
+        <span>Event Berlangsung</span>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero-header">
+      <div class="event-badge">KLAIM REWARD NASIONAL 2026</div>
+      <h1 class="hero-title">
+        Klaim Saldo E-Wallet <br>
+        <span>Hingga Rp 650.000</span>
+      </h1>
+      <p class="hero-sub">
+        Selesaikan verifikasi kuota dalam 3 langkah mudah. 100% instan langsung masuk ke akun e-wallet Anda.
+      </p>
+    </section>
+
+    <!-- STEP PROGRESS BAR -->
+    <div class="step-bar">
+      <div id="stepInd1" class="step-indicator active">
+        <div class="step-circle">1</div>
+        <span class="step-title">Pilih E-Wallet</span>
+      </div>
+      <div id="stepInd2" class="step-indicator">
+        <div class="step-circle">2</div>
+        <span class="step-title">Cek Kuota</span>
+      </div>
+      <div id="stepInd3" class="step-indicator">
+        <div class="step-circle">3</div>
+        <span class="step-title">Pencairan</span>
+      </div>
+    </div>
+
+    <!-- MAIN INTERACTIVE WIZARD CARD -->
+    <div class="wizard-card">
+      
+      <!-- STEP 1 PANEL -->
+      <div id="step1Panel" class="step1-panel" style="display: flex; flex-direction: column; gap: 16px;">
+        <div>
+          <h2 class="wizard-panel-title">Langkah 1: Pilih E-Wallet Tujuan</h2>
+          <p class="wizard-panel-desc">Pilih akun tempat Anda ingin menerima saldo reward:</p>
+        </div>
+
+        <div class="ewallet-grid">
+          <div class="ewallet-option" onclick="selectWallet('DANA', this)">
+            <div class="ewallet-radio-dot"></div>
+            <span class="ewallet-badge" style="color: #38bdf8;">🔵 DANA</span>
+            <span class="ewallet-subtext">Transfer Otomatis</span>
+          </div>
+
+          <div class="ewallet-option" onclick="selectWallet('ShopeePay', this)">
+            <div class="ewallet-radio-dot"></div>
+            <span class="ewallet-badge" style="color: #ff5722;">🟠 ShopeePay</span>
+            <span class="ewallet-subtext">Reward Belanja</span>
+          </div>
+
+          <div class="ewallet-option" onclick="selectWallet('GoPay', this)">
+            <div class="ewallet-radio-dot"></div>
+            <span class="ewallet-badge" style="color: #10b981;">🟢 GoPay</span>
+            <span class="ewallet-subtext">Saldo Instan</span>
+          </div>
+
+          <div class="ewallet-option" onclick="selectWallet('OVO', this)">
+            <div class="ewallet-radio-dot"></div>
+            <span class="ewallet-badge" style="color: #a855f7;">🟣 OVO</span>
+            <span class="ewallet-subtext">Bebas Biaya Admin</span>
+          </div>
+        </div>
+
+        <button id="nextToStep2Btn" class="btn-wizard" type="button" disabled onclick="goToStep2()">
+          <span>Lanjut: Periksa Kuota →</span>
+        </button>
+      </div>
+
+      <!-- STEP 2 PANEL (SCANNING & ALLOCATING) -->
+      <div id="step2Panel" class="step2-panel">
+        <div>
+          <h2 class="wizard-panel-title">Langkah 2: Memeriksa Kuota</h2>
+          <p id="scanStatusText" class="scan-status-text">Menghubungkan ke server reward...</p>
+        </div>
+
+        <div class="scan-progress-box">
+          <div id="scanProgressBar" class="scan-progress-bar"></div>
+        </div>
+
+        <!-- Success Allocation Result Card -->
+        <div id="successAllocationCard" class="success-allocation-card">
+          <div class="success-badge-top">✓ KUOTA RESMI DITEMUKAN</div>
+          <div class="allocated-amount">Rp 650.000</div>
+          
+          <div class="allocated-meta-line">
+            <span>E-Wallet Tujuan</span>
+            <span id="allocatedWalletLabel">DANA</span>
+          </div>
+          <div class="allocated-meta-line">
+            <span>ID Referensi Sesi</span>
+            <span id="allocatedTrxId">CP-729104</span>
+          </div>
+          <div class="allocated-meta-line">
+            <span>Status</span>
+            <span style="color: var(--green-light);">Siap Ditransfer</span>
+          </div>
+
+          <button id="claimRewardBtn" class="btn-wizard" type="button" style="margin-top: 8px;" onclick="triggerClaimReward()">
+            <span>Klaim & Cairkan Saldo Sekarang →</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RECENT ACTIVITY LIVE LIST -->
+    <section class="activity-section">
+      <div class="activity-header">
+        <h3 class="section-title">Aktivitas Pencairan Terkini</h3>
+        <span class="live-tag">● LIVE</span>
+      </div>
+
+      <div id="activityFeed" class="activity-list">
+        <div class="activity-row">
+          <div class="activity-user">
+            <span class="activity-name">Lestari G.***</span>
+            <span class="activity-time">DANA • 1 menit lalu</span>
+          </div>
+          <span class="activity-payout">+Rp 300.000</span>
+        </div>
+        <div class="activity-row">
+          <div class="activity-user">
+            <span class="activity-name">Dimas A.***</span>
+            <span class="activity-time">ShopeePay • 3 menit lalu</span>
+          </div>
+          <span class="activity-payout">+Rp 650.000</span>
+        </div>
+        <div class="activity-row">
+          <div class="activity-user">
+            <span class="activity-name">Budi S.***</span>
+            <span class="activity-time">GoPay • 5 menit lalu</span>
+          </div>
+          <span class="activity-payout">+Rp 250.000</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST FOOTER -->
+    <footer class="trust-footer">
+      <span>🔒 Enkripsi Keamanan 256-Bit SSL • Sistem Otomatis 24 Jam</span>
+      <span>&copy; 2026 CuanPRO Global Rewards. Hak Cipta Dilindungi.</span>
+    </footer>
+
+  </main>
+
+  <!-- SCRIPT -->
+  <script>
+    (function() {
+      const SHOPEE_LINK = "https://s.shopee.co.id/2qV87fGqlb";
+      let selectedWalletName = "";
+
+      window.selectWallet = function(name, element) {
+        selectedWalletName = name;
+        document.querySelectorAll(".ewallet-option").forEach(el => el.classList.remove("selected"));
+        element.classList.add("selected");
+        
+        const nextBtn = document.getElementById("nextToStep2Btn");
+        if (nextBtn) {
+          nextBtn.disabled = false;
+          nextBtn.innerHTML = `<span>Lanjut dengan ${name} →</span>`;
+        }
+      };
+
+      window.goToStep2 = function() {
+        if (!selectedWalletName) return;
+
+        // Switch Steps UI
+        document.getElementById("stepInd1").classList.remove("active");
+        document.getElementById("stepInd1").classList.add("completed");
+        document.getElementById("stepInd2").classList.add("active");
+
+        document.getElementById("step1Panel").style.display = "none";
+        const step2 = document.getElementById("step2Panel");
+        step2.classList.add("active");
+
+        const statusText = document.getElementById("scanStatusText");
+        const progressBar = document.getElementById("scanProgressBar");
+        const successCard = document.getElementById("successAllocationCard");
+        const walletLabel = document.getElementById("allocatedWalletLabel");
+        const trxLabel = document.getElementById("allocatedTrxId");
+
+        if (walletLabel) walletLabel.textContent = selectedWalletName;
+        if (trxLabel) trxLabel.textContent = "CP-" + Math.floor(100000 + Math.random() * 900000);
+
+        // Simulation Timeline
+        progressBar.style.width = "30%";
+        statusText.textContent = "Menghubungkan ke server alokasi...";
+
+        setTimeout(() => {
+          progressBar.style.width = "75%";
+          statusText.textContent = `Memeriksa kuota reward untuk ${selectedWalletName}...`;
+        }, 600);
+
+        setTimeout(() => {
+          progressBar.style.width = "100%";
+          statusText.textContent = "Alokasi saldo berhasil!";
+          
+          document.getElementById("stepInd2").classList.remove("active");
+          document.getElementById("stepInd2").classList.add("completed");
+          document.getElementById("stepInd3").classList.add("active");
+
+          setTimeout(() => {
+            progressBar.parentElement.style.display = "none";
+            statusText.style.display = "none";
+            successCard.style.display = "flex";
+          }, 400);
+        }, 1300);
+      };
+
+      window.triggerClaimReward = function() {
+        openSafeLink(SHOPEE_LINK);
+      };
+
+      function openSafeLink(url) {
+        try {
+          const newWin = window.open(url, "_blank");
+          if (!newWin || newWin.closed || typeof newWin.closed === "undefined") {
+            window.location.href = url;
+          }
+        } catch (e) {
+          window.location.href = url;
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
